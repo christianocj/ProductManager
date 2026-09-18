@@ -8,7 +8,7 @@ using ProductManager.Infrastructure.Persistence;
 
 namespace ProductManager.Infrastructure.Repositories
 {
-    class AccountRepository(AppDbContext context) : IAccountRepository
+    public class AccountRepository(AppDbContext context) : IAccountRepository
     {
         public async Task<Account?> GetByEmailAsync(string email, CancellationToken cancellationToken = default) =>
             await context.Accounts.FirstOrDefaultAsync(a => a.Email.ToLower() == email.ToLower(), cancellationToken);
